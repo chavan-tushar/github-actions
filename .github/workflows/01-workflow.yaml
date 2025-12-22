@@ -9,7 +9,13 @@ on:
         required: false
 
 jobs:
-  say-hello:
+  morning:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "Hello ${{inputs.username}}"
+      - run: echo "Good Morning ${{inputs.username}}"
+  afternoon:
+    runs-on: ubuntu@latest
+    steps:
+      - run: echo "Good Afternoon ${{inputs.username}}"
+    needs:
+      - morning
