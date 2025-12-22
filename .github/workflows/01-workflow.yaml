@@ -3,8 +3,14 @@ name: First Workflow
 on:
   workflow_dispatch
 
+input:
+  username:
+    type: string
+    default: "Tushar"
+    required: false
+
 jobs:
   say-hello:
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "Hello World"
+      - run: echo "Hello ${{inputs.username}}"
