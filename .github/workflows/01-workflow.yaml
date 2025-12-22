@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: echo "Good Morning ${{inputs.username}}"
   afternoon:
-    runs-on: ubuntu@latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Good Afternoon ${{inputs.username}}"
     needs:
