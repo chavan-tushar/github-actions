@@ -49,7 +49,7 @@ jobs:
         run: |
           echo "Greet - 1 ${{ env.WF_GREETING }} | ${{ env.JOB_GREETING }} | ${{ env.STEPS_GREETING }}, ${{github.event.inputs.username}}!"
           echo "value of greeting from morning job: ${{ needs.morning.outputs.greeting }}"
-          echo "value of GREETING from gitHub env: ${GREETING}"
+          echo "value of GREETING from gitHub env: $GREETING"
       - name: Afternoon - Greet User - Step 2
         id: greet-2
         run: |
