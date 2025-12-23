@@ -22,7 +22,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - run: echo "Good Morning ${{github.event.inputs.username}}" \
-          && echo "$GITHUB_EVENT_NAME"
+          && echo "$GITHUB_EVENT_NAME" \
+          && echo "$GITHUB_EVENT_PATH"
   afternoon:
     if: ${{ github.eventinputs.time_of_day == 'afternoon' }}
     runs-on: ubuntu-latest
