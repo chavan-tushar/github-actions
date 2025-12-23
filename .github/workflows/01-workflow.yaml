@@ -24,18 +24,25 @@ jobs:
     env:
       JOB_GREETING: "JOB SAYS HELLO"
     steps:
-      - name: Greet User - Step 1
+      - name: Morning - Greet User - Step 1
         id: greet-1
         env:
           STEPS_GREETING: "STEP SAYS HELLO"
         run: |
           echo "Greet - 1 ${{ env.WF_GREETING }} | ${{ env.JOB_GREETING }} | ${{ env.STEPS_GREETING }}, ${{github.event.inputs.username}}!"
-      - name: Greet User - Step 2
+      - name: Morning - Greet User - Step 2
         id: greet-2
         run: |
           echo "Greet - 2 ${{ env.WF_GREETING }} | ${{ env.JOB_GREETING }} | ${{ env.STEPS_GREETING }}, ${{github.event.inputs.username}}!"
   afternoon:
-    if: ${{ github.eventinputs.time_of_day == 'afternoon' }}
     runs-on: ubuntu-latest
+    needs: morning
     steps:
-      - run: echo "Good Afternoon ${{github.event.inputs.username}}"
+      - name: Afternoon - Greet User - Step 1
+        id: greet-1
+        run: |
+          echo "Greet - 1 ${{ env.WF_GREETING }} | ${{ env.JOB_GREETING }} | ${{ env.STEPS_GREETING }}, ${{github.event.inputs.username}}!"
+      - name: Afternoon - Greet User - Step 2
+        id: greet-2
+        run: |
+          echo "Greet - 2 ${{ env.WF_GREETING }} | ${{ env.JOB_GREETING }} | ${{ env.STEPS_GREETING }}, ${{github.event.inputs.username}}!"
