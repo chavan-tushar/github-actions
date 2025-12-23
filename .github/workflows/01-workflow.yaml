@@ -7,15 +7,23 @@ on:
         type: string
         default: "Tushar"
         required: false
+      time_of_day:
+        type: choice
+        description: "Select time of day"
+        options:
+          - morning
+          - afternoon
+        default: morning
+        required: true
 
 jobs:
   morning:
+    if: ${{ github.event.inputs.time_of_day == 'morning' }}
     runs-on: ubuntu-24.04
     steps:
       - run: echo "Good Morning ${{inputs.username}}"
   afternoon:
+    if: ${{ github.event.inputs.time_of_day == 'afternoon' }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Good Afternoon ${{inputs.username}}"
-    needs:
-      - morning
