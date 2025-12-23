@@ -21,7 +21,8 @@ jobs:
     if: ${{ github.event.inputs.time_of_day == 'morning' }}
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "Good Morning ${{github.event.inputs.username}}"
+      - run: echo "Good Morning ${{github.event.inputs.username}}" \
+          && echo "$GITHUB_EVENT_NAME"
   afternoon:
     if: ${{ github.eventinputs.time_of_day == 'afternoon' }}
     runs-on: ubuntu-latest
