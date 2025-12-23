@@ -18,12 +18,12 @@ on:
 
 jobs:
   morning:
-    if: ${{ inputs.time_of_day == 'morning' }}
+    if: ${{ github.event.inputs.time_of_day == 'morning' }}
     runs-on: ubuntu-24.04
     steps:
-      - run: echo "Good Morning ${{inputs.username}}"
+      - run: echo "Good Morning ${{github.event.inputs.username}}"
   afternoon:
-    if: ${{ inputs.time_of_day == 'afternoon' }}
+    if: ${{ github.eventinputs.time_of_day == 'afternoon' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Good Afternoon ${{inputs.username}}"
+      - run: echo "Good Afternoon ${{github.event.inputs.username}}"
